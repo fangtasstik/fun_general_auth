@@ -52,7 +52,7 @@ watch (
 		height: 36px;
 		width: 36px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 13px;
 		object-fit: cover;
 	}
 	.logo-title {
