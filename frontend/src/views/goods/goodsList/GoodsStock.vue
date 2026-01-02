@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <h1>Goods Stock</h1>
+    <RouterView></RouterView>
   </div>
 </template>
 

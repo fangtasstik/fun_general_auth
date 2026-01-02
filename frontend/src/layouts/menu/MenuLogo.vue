@@ -1,5 +1,5 @@
 <template>
-	<div class="logo">
+	<div class="logo" @click="goHome">
 		<img :src="MenuLogo" alt="logo" />
 		<span v-if="showLogoSpan" class="logo-title">{{ title }}</span>
 	</div>
@@ -9,11 +9,18 @@
 import MenuLogo from "@/assets/funkey.jpg";
 import { ref, watch } from "vue";
 import { useMenuStore } from "@/stores/menu";
+import { useRouter } from "vue-router";
 
 const title = ref("Funkey Auth");
 const menuStore = useMenuStore();
+const router = useRouter();
 const showLogoSpan = ref(true);
 let timer: number | undefined = undefined;
+
+const goHome = () => {
+  router.push('/')
+};
+
 // this watch better used in business component than global store
 watch (
   () => menuStore.isMenuCollapsed,

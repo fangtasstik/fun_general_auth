@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>我的 Dashboard 123</h1>
+    <h1>Components Index</h1>
   </div>
 </template>
 

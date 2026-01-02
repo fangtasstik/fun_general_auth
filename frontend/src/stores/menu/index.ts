@@ -77,7 +77,7 @@ export const useMenuStore = defineStore("menuStore", () => {
           children: [
             {
               path: "/goodsDetail",
-              component: "/goods/GoodsDetail",
+              component: "/goods/goodsList/GoodsDetail",
               name: "goodsDetail",
               meta: {
                 title: "商品详情",
@@ -87,12 +87,68 @@ export const useMenuStore = defineStore("menuStore", () => {
             },
             {
               path: "/goodsStock",
-              component: "/goods/GoodsStock",
+              component: "/goods/goodsList/GoodsStock",
               name: "goodsStock",
               meta: {
                 title: "商品库存",
                 icon: "UserFilled",
                 roles: ["sys:goodsStock"],
+              },
+            }
+          ],
+        },
+      ],
+		},
+		{
+			path: "/testViews",
+			component: "Layout",
+			name: "testViews",
+			meta: {
+				title: "测试视图管理",
+				icon: "ElementPlus",
+				roles: ["sys:testViews"],
+			},
+			children: [
+				{
+					path: "/tools",
+					// component: "/goods/tools",
+					name: "tools",
+					meta: {
+						title: "工具测试",
+						icon: "ElementPlus",
+						roles: ["tstins:category"],
+					},
+          children: [
+            {
+              path: "/testPiniaView",
+              // component: "/goods/goodsList/testPiniaView",
+              name: "testPiniaView",
+              meta: {
+                title: "Pinia测试",
+                icon: "ElementPlus",
+                roles: ["tstins:testPiniaView"],
+              },
+            },
+          ]
+				},
+				{
+					path: "/components",
+					// component: "/goods/components",
+					name: "components",
+					meta: {
+						title: "组件测试",
+						icon: "ElementPlus",
+						roles: ["tstins:components"],
+					},
+          children: [
+            {
+              path: "/pageniationView",
+              // component: "/goods/goodsList/pageniationView",
+              name: "pageniationView",
+              meta: {
+                title: "分页组件",
+                icon: "ElementPlus",
+                roles: ["tstins:pageniationView"],
               },
             }
           ],
