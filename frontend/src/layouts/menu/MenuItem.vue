@@ -5,7 +5,7 @@
         <el-icon class="white--text">
           <component :is="menu.meta.icon" />
         </el-icon>
-        <span class="white--text">{{ menu.meta.title }}</span>
+        <span class="white--text">{{ getTitle(menu) }}</span>
       </template>
       <MenuItem :menuList="menu.children"></MenuItem>
     </el-sub-menu>
@@ -13,14 +13,20 @@
       <el-icon class="white--text">
         <component :is="menu.meta.icon" />
       </el-icon>
-      <template #title>{{ menu.meta.title }}</template>
+      <template #title>{{ getTitle(menu) }}</template>
     </el-menu-item>
   </template>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps(['menuList']);
-console.log(props.menuList);
+import { useI18n } from "vue-i18n";
+import type { MenuItem } from "@/types/route";
+import { resolveTitle } from "@/utils/i18n";
+
+const props = defineProps<{ menuList: MenuItem[] }>();
+const { t } = useI18n();
+
+const getTitle = (menu: MenuItem) => resolveTitle(menu.meta, t);
 </script>
 
 <style scoped>

@@ -18,6 +18,8 @@ dist-ssr
 coverage
 .vite
 .vite-temp
+*_backup.*
+*_backup
 
 # Editor directories and files
 .vscode/*

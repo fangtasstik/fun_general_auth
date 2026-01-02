@@ -9,6 +9,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 			name: "system",
 			meta: {
 				title: "系统管理",
+				titleKey: "menu.system",
 				icon: "Setting",
 				roles: ["sys:manage"],
 			},
@@ -19,6 +20,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "userList",
 					meta: {
 						title: "用户管理",
+						titleKey: "menu.userList",
 						icon: "UserFilled",
 						roles: ["sys:user"],
 					},
@@ -29,6 +31,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "roleList",
 					meta: {
 						title: "角色管理",
+						titleKey: "menu.roleList",
 						icon: "Wallet",
 						roles: ["sys:role"],
 					},
@@ -39,6 +42,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "menuList",
 					meta: {
 						title: "菜单管理",
+						titleKey: "menu.menuList",
 						icon: "Menu",
 						roles: ["sys:menu"],
 					},
@@ -51,6 +55,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 			name: "goodsRoot",
 			meta: {
 				title: "商品管理",
+				titleKey: "menu.goodsRoot",
 				icon: "Setting",
 				roles: ["sys:goodsRoot"],
 			},
@@ -61,6 +66,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "category",
 					meta: {
 						title: "物资类型",
+						titleKey: "menu.category",
 						icon: "UserFilled",
 						roles: ["sys:category"],
 					},
@@ -71,6 +77,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "goodsList",
 					meta: {
 						title: "商品信息",
+						titleKey: "menu.goodsList",
 						icon: "Wallet",
 						roles: ["sys:goodsList"],
 					},
@@ -81,6 +88,7 @@ export const useMenuStore = defineStore("menuStore", () => {
               name: "goodsDetail",
               meta: {
                 title: "商品详情",
+                titleKey: "menu.goodsDetail",
                 icon: "UserFilled",
                 roles: ["sys:goodsDetail"],
               },
@@ -91,6 +99,7 @@ export const useMenuStore = defineStore("menuStore", () => {
               name: "goodsStock",
               meta: {
                 title: "商品库存",
+                titleKey: "menu.goodsStock",
                 icon: "UserFilled",
                 roles: ["sys:goodsStock"],
               },
@@ -105,6 +114,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 			name: "testViews",
 			meta: {
 				title: "测试视图管理",
+				titleKey: "menu.testViews",
 				icon: "ElementPlus",
 				roles: ["sys:testViews"],
 			},
@@ -115,6 +125,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "tools",
 					meta: {
 						title: "工具测试",
+						titleKey: "menu.tools",
 						icon: "ElementPlus",
 						roles: ["tstins:category"],
 					},
@@ -125,6 +136,7 @@ export const useMenuStore = defineStore("menuStore", () => {
               name: "testPiniaView",
               meta: {
                 title: "Pinia测试",
+                titleKey: "menu.testPiniaView",
                 icon: "ElementPlus",
                 roles: ["tstins:testPiniaView"],
               },
@@ -137,6 +149,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					name: "components",
 					meta: {
 						title: "组件测试",
+						titleKey: "menu.components",
 						icon: "ElementPlus",
 						roles: ["tstins:components"],
 					},
@@ -147,6 +160,7 @@ export const useMenuStore = defineStore("menuStore", () => {
               name: "pageniationView",
               meta: {
                 title: "分页组件",
+                titleKey: "menu.pageniationView",
                 icon: "ElementPlus",
                 roles: ["tstins:pageniationView"],
               },

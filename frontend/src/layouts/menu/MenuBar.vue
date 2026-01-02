@@ -26,15 +26,7 @@ import MenuItem from "@/layouts/menu/MenuItem.vue";
 import MenuLogo from "@/layouts/menu/MenuLogo.vue";
 
 let menuStore = useMenuStore();
-const  route = useRoute();
-
-console.log("Bar");
-console.log(route);
-console.log(route.matched);
-console.log(route.path);
-console.log(route.fullPath);
-console.log(route.meta);
-console.log(route.redirectedFrom);
+const route = useRoute();
 
 const activeIndex = computed(() => {
   const currentPath = route.path;
