@@ -1,6 +1,6 @@
 <template>
 		<el-container class="main-container">
-			<el-aside width="250px" class="leftmenu">
+			<el-aside :width="asideWidth" class="leftmenu">
         <MenuBar></MenuBar>
       </el-aside>
 			<el-container>
@@ -16,8 +16,15 @@
 </template>
 
 <script lang="ts" setup>
-  import Header from '@/layouts/header/Header.vue'
-  import MenuBar from '@/layouts/menu/MenuBar.vue'
+import { computed } from "vue";
+import { useMenuStore } from "@/stores/menu";
+import Header from "@/layouts/header/Header.vue";
+import MenuBar from "@/layouts/menu/MenuBar.vue";
+
+const menuStore = useMenuStore();
+const asideWidth = computed(() =>
+	menuStore.isMenuCollapsed ? "64px" : "250px"
+);
 </script>
 
 <style scoped>
@@ -31,6 +38,8 @@
 	}
 	.leftmenu {
 		background-color: #304156;
+		transition: width 0.2s ease;
+		overflow: hidden;
 	}
 	.header {
 		background-color: #b3c0d1;
