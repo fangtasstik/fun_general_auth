@@ -4,7 +4,6 @@ import {
 	createWebHistory,
 	type RouteRecordRaw,
 } from "vue-router";
-// import HomeView from "@/views/HomeView.vue";
 import Layout from "@/layouts/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -19,6 +18,7 @@ const routes: Array<RouteRecordRaw> = [
 				component: () => import("@/views/dashboard/Index.vue"),
 				meta: {
 					title: "首页",
+					titleKey: "menu.dashboard",
 					icon: "#icondashboard",
 				},
 			},
@@ -30,39 +30,40 @@ const routes: Array<RouteRecordRaw> = [
 		name: "system",
 		meta: {
 			title: "系统管理",
+			titleKey: "menu.system",
 			icon: "Setting",
 			roles: ["sys:manage"],
 		},
 		children: [
 			{
 				path: "/userList",
-				// component: "/system/User/UserList",
 				component: () => import("@/views/system/User/UserList.vue"),
 				name: "userList",
 				meta: {
 					title: "用户管理",
+					titleKey: "menu.userList",
 					icon: "UserFilled",
 					roles: ["sys:user"],
 				},
 			},
 			{
 				path: "/roleList",
-				// component: "/system/Role/RoleList",
 				component: () => import("@/views/system/Role/RoleList.vue"),
 				name: "roleList",
 				meta: {
 					title: "角色管理",
+					titleKey: "menu.roleList",
 					icon: "Wallet",
 					roles: ["sys:role"],
 				},
 			},
 			{
 				path: "/menuList",
-				// component: "/system/Menu/MenuList",
 				component: () => import("@/views/system/Menu/MenuList.vue"),
 				name: "menuList",
 				meta: {
 					title: "菜单管理",
+					titleKey: "menu.menuList",
 					icon: "Menu",
 					roles: ["sys:menu"],
 				},
@@ -75,28 +76,29 @@ const routes: Array<RouteRecordRaw> = [
 		name: "goodsRoot",
 		meta: {
 			title: "商品管理",
+			titleKey: "menu.goodsRoot",
 			icon: "Setting",
 			roles: ["sys:goodsRoot"],
 		},
 		children: [
 			{
 				path: "/category",
-				// component: "/goods/Category",
 				component: () => import("@/views/goods/CategoryList.vue"),
 				name: "category",
 				meta: {
 					title: "商品类型",
+					titleKey: "menu.category",
 					icon: "UserFilled",
 					roles: ["sys:category"],
 				},
 			},
 			{
 				path: "/goodsList",
-				// component: "/goods/GoodsList",
 				component: () => import("@/views/goods/GoodsList.vue"),
 				name: "goodsList",
 				meta: {
 					title: "商品信息",
+					titleKey: "menu.goodsList",
 					icon: "Wallet",
 					roles: ["sys:goodsList"],
 				},
@@ -108,6 +110,7 @@ const routes: Array<RouteRecordRaw> = [
 						name: "goodsDetail",
 						meta: {
 							title: "商品详情",
+							titleKey: "menu.goodsDetail",
 							icon: "UserFilled",
 							roles: ["sys:goodsDetail"],
 						},
@@ -119,6 +122,7 @@ const routes: Array<RouteRecordRaw> = [
 						name: "goodsStock",
 						meta: {
 							title: "商品库存",
+							titleKey: "menu.goodsStock",
 							icon: "UserFilled",
 							roles: ["sys:goodsStock"],
 						},
@@ -133,6 +137,7 @@ const routes: Array<RouteRecordRaw> = [
 		name: "testViews",
 		meta: {
 			title: "测试视图管理",
+			titleKey: "menu.testViews",
 			icon: "Setting",
 			roles: ["sys:testViews"],
 		},
@@ -143,6 +148,7 @@ const routes: Array<RouteRecordRaw> = [
 				name: "tools",
 				meta: {
 					title: "工具测试",
+					titleKey: "menu.tools",
 					icon: "ElementPlus",
 					roles: ["tstins:category"],
 				},
@@ -156,6 +162,7 @@ const routes: Array<RouteRecordRaw> = [
 						name: "testPiniaView",
 						meta: {
 							title: "Pinia测试",
+							titleKey: "menu.testPiniaView",
 							icon: "ElementPlus",
 							roles: ["tstins:testPiniaView"],
 						},
@@ -168,6 +175,7 @@ const routes: Array<RouteRecordRaw> = [
 				name: "components",
 				meta: {
 					title: "组件测试",
+					titleKey: "menu.components",
 					icon: "ElementPlus",
 					roles: ["tstins:components"],
 				},
@@ -181,6 +189,7 @@ const routes: Array<RouteRecordRaw> = [
 						name: "pageniationView",
 						meta: {
 							title: "分页组件",
+							titleKey: "menu.pageniationView",
 							icon: "ElementPlus",
 							roles: ["tstins:pageniationView"],
 						},
