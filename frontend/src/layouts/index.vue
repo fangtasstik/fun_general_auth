@@ -8,6 +8,7 @@
           <Header></Header>
         </el-header>
 				<el-main class="main">
+          <Tabs></Tabs>
           <RouterView></RouterView>
         </el-main>
 				<!-- <el-footer class="footer">Footer</el-footer> -->
@@ -20,6 +21,7 @@ import { computed } from "vue";
 import { useMenuStore } from "@/stores/menu";
 import Header from "@/layouts/header/Header.vue";
 import MenuBar from "@/layouts/menu/MenuBar.vue";
+import Tabs from "@/layouts/tabs/Tabs.vue";
 
 const menuStore = useMenuStore();
 const asideWidth = computed(() =>
@@ -39,7 +41,7 @@ const asideWidth = computed(() =>
 	.leftmenu {
 		background-color: #304156;
 		transition: width 0.2s ease;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 	.header {
 		background-color: #b3c0d1;

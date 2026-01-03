@@ -18,7 +18,7 @@ const showLogoSpan = ref(true);
 let timer: number | undefined = undefined;
 
 const goHome = () => {
-  router.push('/')
+  // router.push('/')
 };
 
 // this watch better used in business component than global store

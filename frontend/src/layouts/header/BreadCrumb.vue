@@ -32,7 +32,7 @@ const getBreadCrumb = () => {
   const firstItem = matched[0]
   if (firstItem && firstItem.path !== '/dashboard') {
     matched.unshift({
-      path: '/',
+      path: '/dashboard',
       meta: { titleKey: 'menu.dashboard', title: '首页' },
     })
   }

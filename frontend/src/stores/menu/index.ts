@@ -4,6 +4,17 @@ import { reactive, ref } from "vue";
 export const useMenuStore = defineStore("menuStore", () => {
 	const menuList = reactive([
 		{
+			path: "/dashboard",
+			component: "dashboard/Index",
+			name: "dashboard",
+			meta: {
+				title: "首页",
+				titleKey: "menu.dashboard",
+				icon: "House",
+				roles: ["sys:dashboard"],
+			},
+    },
+		{
 			path: "/system",
 			component: "Layout",
 			name: "system",
@@ -15,7 +26,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 			},
 			children: [
 				{
-					path: "/userList",
+					path: "/system/userList",
 					component: "/system/User/UserList",
 					name: "userList",
 					meta: {
@@ -26,7 +37,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					},
 				},
 				{
-					path: "/roleList",
+					path: "/system/roleList",
 					component: "/system/Role/RoleList",
 					name: "roleList",
 					meta: {
@@ -37,7 +48,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					},
 				},
 				{
-					path: "/menuList",
+					path: "/system/menuList",
 					component: "/system/Menu/MenuList",
 					name: "menuList",
 					meta: {
@@ -61,7 +72,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 			},
 			children: [
 				{
-					path: "/category",
+					path: "/goodsRoot/category",
 					component: "/goods/Category",
 					name: "category",
 					meta: {
@@ -72,7 +83,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					},
 				},
 				{
-					path: "/goodsList",
+					path: "/goodsRoot/goodsList",
 					component: "/goods/GoodsList",
 					name: "goodsList",
 					meta: {
@@ -83,7 +94,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					},
           children: [
             {
-              path: "/goodsDetail",
+              path: "/goodsRoot/goodsList/goodsDetail",
               component: "/goods/goodsList/GoodsDetail",
               name: "goodsDetail",
               meta: {
@@ -94,7 +105,7 @@ export const useMenuStore = defineStore("menuStore", () => {
               },
             },
             {
-              path: "/goodsStock",
+              path: "/goodsRoot/goodsList/goodsStock",
               component: "/goods/goodsList/GoodsStock",
               name: "goodsStock",
               meta: {
@@ -120,7 +131,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 			},
 			children: [
 				{
-					path: "/tools",
+					path: "/testViews/tools",
 					// component: "/goods/tools",
 					name: "tools",
 					meta: {
@@ -131,7 +142,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					},
           children: [
             {
-              path: "/testPiniaView",
+              path: "/testViews/tools/testPiniaView",
               // component: "/goods/goodsList/testPiniaView",
               name: "testPiniaView",
               meta: {
@@ -144,7 +155,7 @@ export const useMenuStore = defineStore("menuStore", () => {
           ]
 				},
 				{
-					path: "/components",
+					path: "/testViews/components",
 					// component: "/goods/components",
 					name: "components",
 					meta: {
@@ -155,7 +166,7 @@ export const useMenuStore = defineStore("menuStore", () => {
 					},
           children: [
             {
-              path: "/pageniationView",
+              path: "/testViews/components/pageniationView",
               // component: "/goods/goodsList/pageniationView",
               name: "pageniationView",
               meta: {
