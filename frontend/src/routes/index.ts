@@ -10,6 +10,7 @@ const routes: Array<RouteRecordRaw> = [
 	{
 		path: "/",
 		component: Layout,
+    redirect: "/dashboard",
 		children: [
 			{
 				path: "dashboard",
@@ -190,6 +191,20 @@ const routes: Array<RouteRecordRaw> = [
 							titleKey: "menu.pageniationView",
 							icon: "ElementPlus",
 							roles: ["tstins:pageniationView"],
+						},
+					},
+					{
+						path: "dialogView",
+						component: () =>
+							import(
+								"@/views/test/components/DialogView.vue"
+							),
+						name: "dialogView",
+						meta: {
+							title: "弹窗组件",
+							titleKey: "menu.dialogView",
+							icon: "ElementPlus",
+							roles: ["tstins:dialogView"],
 						},
 					},
 				],

@@ -8,10 +8,13 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createPinia } from 'pinia'
 import { i18n } from '@/i18n'
 import 'element-plus/dist/index.css'
+import piniaPersist from 'pinia-plugin-persistedstate'
 
 import './style.css'
 
 const pinia = createPinia()
+// introduce pinia persist
+pinia.use(piniaPersist)
 const app = createApp(App)
 
 app.use(pinia)

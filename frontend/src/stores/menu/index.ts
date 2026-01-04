@@ -175,7 +175,18 @@ export const useMenuStore = defineStore("menuStore", () => {
                 icon: "ElementPlus",
                 roles: ["tstins:pageniationView"],
               },
-            }
+            },
+            {
+              path: "/testViews/components/dialogView",
+              // component: "/goods/goodsList/dialogView",
+              name: "dialogView",
+              meta: {
+                title: "弹窗组件",
+                titleKey: "menu.dialogView",
+                icon: "ElementPlus",
+                roles: ["tstins:dialogView"],
+              },
+            },
           ],
         },
       ],

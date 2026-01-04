@@ -35,21 +35,23 @@ const asideWidth = computed(() =>
 } */
 .main-container {
 	height: 100%;
-	.header {
-		background-color: #b3c0d1;
-	}
 	.leftmenu {
 		background-color: #304156;
 		transition: width 0.2s ease;
 		/* overflow: hidden; */
 	}
 	.header {
-		background-color: #b3c0d1;
+		background-color: #2b2f3a;
     display: flex;
     align-items: center;
 	}
 	.main {
-		background-color: #e9eef3;
+    padding: 0px;
+		/* background-color: #e9eef3; */
+    .tab {
+      display: flex;
+      justify-content: space-between;
+    }
 	}
 	.footer {
 		background-color: #b3c0d1;
