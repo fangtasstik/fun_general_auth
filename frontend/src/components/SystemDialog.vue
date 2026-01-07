@@ -1,6 +1,6 @@
 <template>
 	<el-dialog
-		v-model="props.visible"
+		v-model="dialogVisible"
 		:title="props.title"
 		:width="props.width + 'px'"
 		:before-close="onClose"
@@ -11,6 +11,7 @@
     </div>
 		<template #footer>
 			<div class="dialog-footer">
+        <!-- @R: better use variable instead of fixed text for button label -->
 				<el-button type="danger" @click="onClose">{{ t("common.cancel") }}</el-button>
 				<el-button type="primary" @click="onConfirm">
 					{{ t("common.confirm") }}
@@ -21,9 +22,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { ElMessageBox } from "element-plus";
 
 export interface DialogProps {
 	title?: string;
@@ -41,25 +41,20 @@ const props = withDefaults(defineProps<DialogProps>(), {
 
 const { t } = useI18n();
 
-// emit events
-const emit = defineEmits(["onClose","onConfirm"])
-const onClose = () => {
-  emit("onClose");
+const emit = defineEmits(["update:visible", "onClose", "onConfirm"]);
+
+const dialogVisible = computed({
+	get: () => props.visible,
+	set: (val) => emit("update:visible", val),
+});
+
+const onClose = (done?: () => void) => {
+	dialogVisible.value = false;
+	emit("onClose");
+	if (done) done();
 };
 const onConfirm = () => {
-  emit("onConfirm");
-};
-
-const dialogVisible = ref(false);
-
-const handleClose = (done: () => void) => {
-	ElMessageBox.confirm("Are you sure to close this dialog?")
-		.then(() => {
-			done();
-		})
-		.catch(() => {
-			// catch error
-		});
+	emit("onConfirm");
 };
 </script>
 
@@ -99,3 +94,5 @@ const handleClose = (done: () => void) => {
   }
 }
 </style>
+
+

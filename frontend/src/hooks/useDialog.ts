@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import type { DialogModel } from "@/types/BaseType";
+import type { DialogModel } from "@/types/baseType";
 
 export function useDialog() {
 	const dialog = reactive<DialogModel>({
@@ -9,15 +9,15 @@ export function useDialog() {
 		height: 280,
 	});
 
-	const onShow = () => {
+	const open = () => {
 		dialog.visible = true;
 	};
-	const onClose = () => {
+	const close = () => {
 		dialog.visible = false;
 	};
-	const onConfirm = () => {
+	const confirm = () => {
 		dialog.visible = false;
 	};
 
-	return { dialog, onShow, onClose, onConfirm };
+	return { dialog, open, close, confirm };
 }
