@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
 	{
 		path: "/",
 		component: Layout,
-		redirect: "/dashboard",
+    redirect: "/dashboard",
 		children: [
 			{
 				path: "dashboard",
@@ -19,7 +19,8 @@ const routes: Array<RouteRecordRaw> = [
 				meta: {
 					title: "首页",
 					titleKey: "menu.dashboard",
-					icon: "#icondashboard",
+					icon: "House",
+					roles: ["sys:dashboard"],
 				},
 			},
 		],
@@ -36,7 +37,7 @@ const routes: Array<RouteRecordRaw> = [
 		},
 		children: [
 			{
-				path: "/userList",
+				path: "userList",
 				component: () => import("@/views/system/User/UserList.vue"),
 				name: "userList",
 				meta: {
@@ -47,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
 				},
 			},
 			{
-				path: "/roleList",
+				path: "roleList",
 				component: () => import("@/views/system/Role/RoleList.vue"),
 				name: "roleList",
 				meta: {
@@ -58,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
 				},
 			},
 			{
-				path: "/menuList",
+				path: "menuList",
 				component: () => import("@/views/system/Menu/MenuList.vue"),
 				name: "menuList",
 				meta: {
@@ -82,7 +83,7 @@ const routes: Array<RouteRecordRaw> = [
 		},
 		children: [
 			{
-				path: "/category",
+				path: "category",
 				component: () => import("@/views/goods/CategoryList.vue"),
 				name: "category",
 				meta: {
@@ -93,7 +94,7 @@ const routes: Array<RouteRecordRaw> = [
 				},
 			},
 			{
-				path: "/goodsList",
+				path: "goodsList",
 				component: () => import("@/views/goods/GoodsList.vue"),
 				name: "goodsList",
 				meta: {
@@ -104,7 +105,7 @@ const routes: Array<RouteRecordRaw> = [
 				},
 				children: [
 					{
-						path: "/goodsDetail",
+						path: "goodsDetail",
 						component: () =>
 							import("@/views/goods/goodsList/GoodsDetail.vue"),
 						name: "goodsDetail",
@@ -116,7 +117,7 @@ const routes: Array<RouteRecordRaw> = [
 						},
 					},
 					{
-						path: "/goodsStock",
+						path: "goodsStock",
 						component: () =>
 							import("@/views/goods/goodsList/GoodsStock.vue"),
 						name: "goodsStock",
@@ -143,7 +144,7 @@ const routes: Array<RouteRecordRaw> = [
 		},
 		children: [
 			{
-				path: "/tools",
+				path: "tools",
 				component: () => import("@/views/test/tools/Index.vue"),
 				name: "tools",
 				meta: {
@@ -154,11 +155,9 @@ const routes: Array<RouteRecordRaw> = [
 				},
 				children: [
 					{
-						path: "/testPiniaView",
+						path: "testPiniaView",
 						component: () =>
-							import(
-								"@/views/test/tools/TestPiniaView.vue"
-							),
+							import("@/views/test/tools/TestPiniaView.vue"),
 						name: "testPiniaView",
 						meta: {
 							title: "Pinia测试",
@@ -170,7 +169,7 @@ const routes: Array<RouteRecordRaw> = [
 				],
 			},
 			{
-				path: "/components",
+				path: "components",
 				component: () => import("@/views/test/components/Index.vue"),
 				name: "components",
 				meta: {
@@ -181,7 +180,7 @@ const routes: Array<RouteRecordRaw> = [
 				},
 				children: [
 					{
-						path: "/pageniationView",
+						path: "pageniationView",
 						component: () =>
 							import(
 								"@/views/test/components/PaginationView.vue"
@@ -192,6 +191,20 @@ const routes: Array<RouteRecordRaw> = [
 							titleKey: "menu.pageniationView",
 							icon: "ElementPlus",
 							roles: ["tstins:pageniationView"],
+						},
+					},
+					{
+						path: "dialogView",
+						component: () =>
+							import(
+								"@/views/test/components/DialogView.vue"
+							),
+						name: "dialogView",
+						meta: {
+							title: "弹窗组件",
+							titleKey: "menu.dialogView",
+							icon: "ElementPlus",
+							roles: ["tstins:dialogView"],
 						},
 					},
 				],
