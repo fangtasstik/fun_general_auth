@@ -1,17 +1,17 @@
 -- =============================================
 -- RBAC access control system MySQL script
--- MySQL Version: 5.7+ / 8.0+
+-- MySQL Version: 5.7+
 -- Character Set: utf8mb4
 -- Collation: utf8mb4_unicode_ci
 -- Storage Engine: InnoDB
 -- =============================================
 
 -- Create database (optional)
-CREATE DATABASE IF NOT EXISTS rbac_system
+CREATE DATABASE IF NOT EXISTS fun_auth_db
 DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_unicode_ci;
 
-USE rbac_system;
+USE fun_auth_db;
 
 -- =============================================
 -- 1. Users table
@@ -89,9 +89,7 @@ CREATE TABLE sys_user_role (
     PRIMARY KEY (user_role_id),
     UNIQUE KEY uk_user_role (user_id, role_id),
     KEY idx_user_id (user_id),
-    KEY idx_role_id (role_id),
-    CONSTRAINT fk_user_role_user FOREIGN KEY (user_id) REFERENCES sys_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_user_role_role FOREIGN KEY (role_id) REFERENCES sys_role (role_id) ON DELETE CASCADE ON UPDATE CASCADE
+    KEY idx_role_id (role_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='User-role relation';
 
 -- =============================================
@@ -105,9 +103,7 @@ CREATE TABLE sys_role_menu (
     PRIMARY KEY (role_menu_id),
     UNIQUE KEY uk_role_menu (role_id, menu_id),
     KEY idx_role_id (role_id),
-    KEY idx_menu_id (menu_id),
-    CONSTRAINT fk_role_menu_role FOREIGN KEY (role_id) REFERENCES sys_role (role_id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_role_menu_menu FOREIGN KEY (menu_id) REFERENCES sys_menu (menu_id) ON DELETE CASCADE ON UPDATE CASCADE
+    KEY idx_menu_id (menu_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Role-menu relation';
 
 -- =============================================
@@ -201,41 +197,46 @@ BEGIN
     ORDER BY m.parent_id, m.order_num;
 END//
 
--- Get menu tree recursively
+-- Get menu tree (MySQL 5.7 compatible version using temporary table)
 CREATE PROCEDURE sp_get_menu_tree(IN p_parent_id INT)
 BEGIN
-    WITH RECURSIVE menu_tree AS (
-        SELECT 
-            menu_id,
-            parent_id,
-            title,
-            code,
-            path,
-            url,
-            type,
-            icon,
-            order_num,
-            0 as level
-        FROM sys_menu
-        WHERE parent_id = p_parent_id
-        
-        UNION ALL
-        
-        SELECT 
-            m.menu_id,
-            m.parent_id,
-            m.title,
-            m.code,
-            m.path,
-            m.url,
-            m.type,
-            m.icon,
-            m.order_num,
-            mt.level + 1
+    -- Create temporary table to store results
+    CREATE TEMPORARY TABLE temp_menu_tree (
+        menu_id INT,
+        parent_id INT,
+        title VARCHAR(64),
+        code VARCHAR(64),
+        path VARCHAR(36),
+        url VARCHAR(128),
+        type VARCHAR(2),
+        icon VARCHAR(36),
+        order_num INT,
+        level INT
+    );
+    
+    -- Insert root level
+    INSERT INTO temp_menu_tree
+    SELECT menu_id, parent_id, title, code, path, url, type, icon, order_num, 0
+    FROM sys_menu 
+    WHERE parent_id = p_parent_id;
+    
+    -- Loop to get all levels (max 10 levels to prevent infinite loop)
+    SET @level = 0;
+    WHILE @level < 10 AND ROW_COUNT() > 0 DO
+        INSERT INTO temp_menu_tree
+        SELECT m.menu_id, m.parent_id, m.title, m.code, m.path, m.url, m.type, m.icon, m.order_num, @level + 1
         FROM sys_menu m
-        INNER JOIN menu_tree mt ON m.parent_id = mt.menu_id
-    )
-    SELECT * FROM menu_tree ORDER BY level, order_num;
+        INNER JOIN temp_menu_tree t ON m.parent_id = t.menu_id AND t.level = @level
+        WHERE NOT EXISTS (SELECT 1 FROM temp_menu_tree t2 WHERE t2.menu_id = m.menu_id);
+        
+        SET @level = @level + 1;
+    END WHILE;
+    
+    -- Return results
+    SELECT * FROM temp_menu_tree ORDER BY level, order_num;
+    
+    -- Clean up
+    DROP TEMPORARY TABLE temp_menu_tree;
 END//
 
 DELIMITER ;
@@ -269,10 +270,12 @@ Permission design notes:
 -- Notes
 -- =============================================
 /*
-1. All tables use InnoDB engine with transaction and FK support
+1. All tables use InnoDB engine for better performance
 2. Character set uses utf8mb4 to support emoji and special characters
 3. Use DATETIME instead of TIMESTAMP to avoid the 2038 limitation
 4. Passwords should be stored hashed (BCrypt, SHA256, etc.)
 5. Back up the database regularly
-6. Consider audit fields in production (created_by, updated_by, etc.)
+6. Foreign key constraints removed for better performance and scalability
+7. Data integrity should be maintained at application level
+8. Consider audit fields in production (created_by, updated_by, etc.)
 */

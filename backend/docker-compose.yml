@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: fun_auth_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: fun_root
+      MYSQL_DATABASE: fun_auth_db
+      MYSQL_USER: fun_user
+      MYSQL_PASSWORD: fun_auth
+    ports:
+      - "3316:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - auth_network
+
+volumes:
+  mysql_data:
+
+networks:
+  auth_network:
+    driver: bridge

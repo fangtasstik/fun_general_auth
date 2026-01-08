@@ -1,0 +1,45 @@
+2026-01-09 00:18:23.475 +10:00 [INF] MSSqlMcp application starting up
+2026-01-09 00:18:23.585 +10:00 [INF] Server=localhost;Database=tass_dev_2025;User Id=fang;Password=fangguoqwer1234;TrustServerCertificate=true;Connection Timeout=30;
+2026-01-09 00:18:23.596 +10:00 [INF] Connection string configured: true
+2026-01-09 00:18:24.097 +10:00 [INF] Server (stream) (MSSqlMcp) transport reading messages.
+2026-01-09 00:18:24.250 +10:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-09 00:18:24.250 +10:00 [INF] Hosting environment: Production
+2026-01-09 00:18:24.250 +10:00 [INF] Content root path: C:\TASS-Github\mssql-mcp\bin\Debug\net8.0\
+2026-01-09 00:18:24.262 +10:00 [INF] Server (MSSqlMcp 1.0.0.0) method 'initialize' request handler called.
+2026-01-09 00:18:24.280 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'initialize' request handler completed.
+2026-01-09 00:18:24.303 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'tools/list' request handler called.
+2026-01-09 00:18:24.319 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'tools/list' request handler completed.
+2026-01-09 00:18:24.348 +10:00 [INF] Server (stream) (MSSqlMcp) transport completed reading messages.
+2026-01-09 00:18:24.354 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) shutting down.
+2026-01-09 00:18:24.356 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) shut down.
+2026-01-09 00:18:24.357 +10:00 [INF] Application is shutting down...
+2026-01-09 00:18:24.370 +10:00 [INF] Server (stream) (MSSqlMcp) shutting down.
+2026-01-09 00:18:24.370 +10:00 [INF] Server (stream) (MSSqlMcp) shut down.
+2026-01-09 00:18:27.974 +10:00 [INF] MSSqlMcp application starting up
+2026-01-09 00:18:28.027 +10:00 [INF] Server=localhost;Database=tass_dev_2025;User Id=fang;Password=fangguoqwer1234;TrustServerCertificate=true;Connection Timeout=30;
+2026-01-09 00:18:28.037 +10:00 [INF] Connection string configured: true
+2026-01-09 00:18:28.252 +10:00 [INF] Server (stream) (MSSqlMcp) transport reading messages.
+2026-01-09 00:18:28.351 +10:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-09 00:18:28.351 +10:00 [INF] Hosting environment: Production
+2026-01-09 00:18:28.351 +10:00 [INF] Content root path: C:\TASS-Github\mssql-mcp\bin\Debug\net8.0\
+2026-01-09 00:18:28.357 +10:00 [INF] Server (MSSqlMcp 1.0.0.0) method 'initialize' request handler called.
+2026-01-09 00:18:28.370 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'initialize' request handler completed.
+2026-01-09 00:18:28.390 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'tools/list' request handler called.
+2026-01-09 00:18:28.400 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'tools/list' request handler completed.
+2026-01-09 00:18:29.023 +10:00 [INF] Server (stream) (MSSqlMcp) transport completed reading messages.
+2026-01-09 00:18:29.032 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) shutting down.
+2026-01-09 00:18:29.036 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) shut down.
+2026-01-09 00:18:29.038 +10:00 [INF] Application is shutting down...
+2026-01-09 00:18:29.053 +10:00 [INF] Server (stream) (MSSqlMcp) shutting down.
+2026-01-09 00:18:29.053 +10:00 [INF] Server (stream) (MSSqlMcp) shut down.
+2026-01-09 00:18:34.050 +10:00 [INF] MSSqlMcp application starting up
+2026-01-09 00:18:34.104 +10:00 [INF] Server=localhost;Database=tass_dev_2025;User Id=fang;Password=fangguoqwer1234;TrustServerCertificate=true;Connection Timeout=30;
+2026-01-09 00:18:34.108 +10:00 [INF] Connection string configured: true
+2026-01-09 00:18:34.346 +10:00 [INF] Server (stream) (MSSqlMcp) transport reading messages.
+2026-01-09 00:18:34.447 +10:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-09 00:18:34.447 +10:00 [INF] Hosting environment: Production
+2026-01-09 00:18:34.447 +10:00 [INF] Content root path: C:\TASS-Github\mssql-mcp\bin\Debug\net8.0\
+2026-01-09 00:18:34.453 +10:00 [INF] Server (MSSqlMcp 1.0.0.0) method 'initialize' request handler called.
+2026-01-09 00:18:34.462 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'initialize' request handler completed.
+2026-01-09 00:18:34.481 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'tools/list' request handler called.
+2026-01-09 00:18:34.488 +10:00 [INF] Server (MSSqlMcp 1.0.0.0), Client (q-chat-plugin 1.0.0) method 'tools/list' request handler completed.
