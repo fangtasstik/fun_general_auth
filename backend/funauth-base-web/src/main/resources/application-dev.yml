@@ -1,0 +1,14 @@
+server:
+  port: 8096
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: ${DB_DRIVER}
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd} [%thread] %-5level %logger- %msg%n'
+#  level:
+#    root: WARN

@@ -1,26 +1,24 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:5.7
-    container_name: fun_auth_mysql
+  postgres:
+    image: postgres:17
+    container_name: fun_auth_postgres
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: fun_root
-      MYSQL_DATABASE: fun_auth_db
-      MYSQL_USER: fun_user
-      MYSQL_PASSWORD: fun_auth
+      POSTGRES_PASSWORD: fun_root
+      POSTGRES_DB: fun_auth_db
+      POSTGRES_USER: fun_user
     ports:
-      - "3316:3306"
+      - "5432:5432"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
       - ./sql:/docker-entrypoint-initdb.d
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     networks:
       - auth_network
 
 volumes:
-  mysql_data:
+  postgres_data:
 
 networks:
   auth_network:
