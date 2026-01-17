@@ -35,14 +35,7 @@ public class SysRoleController {
     public Result<SysRole> get(@PathVariable Long id) {
         return sysRoleRepository.findById(id)
             .map(Result::ok)
-            .orElseGet(() -> Result.<SysRole>fail().message("数据不存在"));
-    }
-
-    @GetMapping("/{id}")
-    public Result<List<SysRole>> getRoleList(RoleParm roleParm) {
-        return sysRoleRepository.findById(id)
-                .map(Result::ok)
-                .orElseGet(() -> Result.<SysRole>fail().message("数据不存在"));
+            .orElseGet(() -> Result.<SysRole>fail().message("Data not found"));
     }
 
     // COMMAND
@@ -55,7 +48,7 @@ public class SysRoleController {
     @PutMapping("/{id}")
     public Result<SysRole> update(@PathVariable Long id, @RequestBody SysRole sysRole) {
         if (!sysRoleRepository.existsById(id)) {
-            return Result.<SysRole>fail().message("数据不存在");
+            return Result.<SysRole>fail().message("Data not found");
         }
         sysRole.setRoleId(id);
         return Result.ok(sysRoleRepository.save(sysRole));
@@ -65,11 +58,11 @@ public class SysRoleController {
     public Result<Void> delete(@PathVariable Long id) {
         if (!sysRoleRepository.existsById(id)) {
             Result<Void> result = Result.fail();
-            return result.message("数据不存在");
+            return result.message("Data not found");
         }
         sysRoleRepository.deleteById(id);
         Result<Void> result = Result.ok();
-        return result.message("删除成功");
+        return result.message("Data Deleted");
     }
 }
 

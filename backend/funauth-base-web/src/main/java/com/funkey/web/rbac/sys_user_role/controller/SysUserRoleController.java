@@ -32,7 +32,7 @@ public class SysUserRoleController {
     public Result<SysUserRole> get(@PathVariable Long id) {
         return sysUserRoleRepository.findById(id)
             .map(Result::ok)
-            .orElseGet(() -> Result.<SysUserRole>fail().message("数据不存在"));
+            .orElseGet(() -> Result.<SysUserRole>fail().message("Data not found"));
     }
 
     @PostMapping
@@ -43,7 +43,7 @@ public class SysUserRoleController {
     @PutMapping("/{id}")
     public Result<SysUserRole> update(@PathVariable Long id, @RequestBody SysUserRole sysUserRole) {
         if (!sysUserRoleRepository.existsById(id)) {
-            return Result.<SysUserRole>fail().message("数据不存在");
+            return Result.<SysUserRole>fail().message("Data not found");
         }
         sysUserRole.setUserRoleId(id);
         return Result.ok(sysUserRoleRepository.save(sysUserRole));
@@ -53,11 +53,11 @@ public class SysUserRoleController {
     public Result<Void> delete(@PathVariable Long id) {
         if (!sysUserRoleRepository.existsById(id)) {
             Result<Void> result = Result.fail();
-            return result.message("数据不存在");
+            return result.message("Data not found");
         }
         sysUserRoleRepository.deleteById(id);
         Result<Void> result = Result.ok();
-        return result.message("删除成功");
+        return result.message("Data Deleted");
     }
 }
 

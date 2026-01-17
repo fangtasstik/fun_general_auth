@@ -32,7 +32,7 @@ public class SysRoleMenuController {
     public Result<SysRoleMenu> get(@PathVariable Long id) {
         return sysRoleMenuRepository.findById(id)
             .map(Result::ok)
-            .orElseGet(() -> Result.<SysRoleMenu>fail().message("数据不存在"));
+            .orElseGet(() -> Result.<SysRoleMenu>fail().message("Data not found"));
     }
 
     @PostMapping
@@ -43,7 +43,7 @@ public class SysRoleMenuController {
     @PutMapping("/{id}")
     public Result<SysRoleMenu> update(@PathVariable Long id, @RequestBody SysRoleMenu sysRoleMenu) {
         if (!sysRoleMenuRepository.existsById(id)) {
-            return Result.<SysRoleMenu>fail().message("数据不存在");
+            return Result.<SysRoleMenu>fail().message("Data not found");
         }
         sysRoleMenu.setRoleMenuId(id);
         return Result.ok(sysRoleMenuRepository.save(sysRoleMenu));
@@ -53,11 +53,11 @@ public class SysRoleMenuController {
     public Result<Void> delete(@PathVariable Long id) {
         if (!sysRoleMenuRepository.existsById(id)) {
             Result<Void> result = Result.fail();
-            return result.message("数据不存在");
+            return result.message("Data not found");
         }
         sysRoleMenuRepository.deleteById(id);
         Result<Void> result = Result.ok();
-        return result.message("删除成功");
+        return result.message("Data Deleted");
     }
 }
 

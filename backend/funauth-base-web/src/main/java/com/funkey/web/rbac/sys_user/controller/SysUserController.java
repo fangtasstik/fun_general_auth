@@ -32,7 +32,7 @@ public class SysUserController {
     public Result<SysUser> get(@PathVariable Long id) {
         return sysUserRepository.findById(id)
             .map(Result::ok)
-            .orElseGet(() -> Result.<SysUser>fail().message("数据不存在"));
+            .orElseGet(() -> Result.<SysUser>fail().message("Data not found"));
     }
 
     @PostMapping
@@ -43,7 +43,7 @@ public class SysUserController {
     @PutMapping("/{id}")
     public Result<SysUser> update(@PathVariable Long id, @RequestBody SysUser sysUser) {
         if (!sysUserRepository.existsById(id)) {
-            return Result.<SysUser>fail().message("数据不存在");
+            return Result.<SysUser>fail().message("Data not found");
         }
         sysUser.setUserId(id);
         return Result.ok(sysUserRepository.save(sysUser));
@@ -53,11 +53,11 @@ public class SysUserController {
     public Result<Void> delete(@PathVariable Long id) {
         if (!sysUserRepository.existsById(id)) {
             Result<Void> result = Result.fail();
-            return result.message("数据不存在");
+            return result.message("Data not found");
         }
         sysUserRepository.deleteById(id);
         Result<Void> result = Result.ok();
-        return result.message("删除成功");
+        return result.message("Data Deleted");
     }
 }
 
