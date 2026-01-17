@@ -1,15 +1,21 @@
 package com.funkey.utils;
 
 import com.funkey.status.ResultCodeEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
+@Schema(name = "Result", description = "Unified API response wrapper")
+@Data
 public class Result<T> {
 
+    @Schema(description = "Business status code")
     private Integer code;
+    @Schema(description = "Human-readable message")
     private String message;
+    @Schema(description = "Response payload")
     private T data;
 
-    public Result() {
-    }
+    public Result() {}
 
     public static <T> Result<T> build(T data) {
         Result<T> result = new Result<>();
@@ -54,27 +60,4 @@ public class Result<T> {
         return this.code != null && this.code.intValue() == ResultCodeEnum.SUCCESS.getCode().intValue();
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
 }

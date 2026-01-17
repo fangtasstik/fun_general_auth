@@ -1,12 +1,12 @@
 package com.funkey.status;
 
 public enum ResultCodeEnum {
-    SUCCESS(200, "成功"),
-    FAIL(201, "失败"),
-    SERVICE_ERROR(500, "服务异常"),
-    ILLEGAL_REQUEST(400, "非法请求"),
-    NO_LOGIN(401, "未登录"),
-    NO_AUTH(403, "没有权限");
+    SUCCESS(200, "Success"),
+    FAIL(201, "Fail"),
+    SERVICE_ERROR(500, "Service error"),
+    ILLEGAL_REQUEST(400, "Illegal request"),
+    NO_LOGIN(401, "Not logged in"),
+    NO_AUTH(403, "No permission");
 
     private final Integer code;
     private final String message;

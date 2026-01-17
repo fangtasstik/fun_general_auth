@@ -1,57 +1,43 @@
 package com.funkey.config;
 
-import java.time.LocalDateTime;
-
+import com.funkey.status.ResultCodeEnum;
+import com.funkey.utils.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ErrorResponse> handleDataIntegrity(DataIntegrityViolationException ex) {
-        String detail = ex.getMostSpecificCause() != null
-            ? ex.getMostSpecificCause().getMessage()
-            : ex.getMessage();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-            .body(new ErrorResponse(400, "Data integrity violation", detail));
+    @ExceptionHandler(RuntimeException.class)
+    public Result<Object> handleRuntime(RuntimeException ex) {
+        log.error("RuntimeException: {}", ex);
+        Result<Object> result = Result.fail();
+        return result.message(ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .body(new ErrorResponse(500, "Internal server error", ex.getMessage()));
+    public Result<Object> handleException(Exception ex) {
+        log.error("Exception: {}", ex);
+        Result<Object> result = Result.fail();
+        return result.message(ex.getMessage());
     }
 
-    public static class ErrorResponse {
-        private final int code;
-        private final String message;
-        private final String detail;
-        private final LocalDateTime timestamp = LocalDateTime.now();
+    @ExceptionHandler(Throwable.class)
+    public Result<Object> handleThrowable(Throwable ex) {
+        log.error("Throwable: {}", ex);
+        Result<Object> result = Result.fail();
+        return result.message(ex.getMessage());
+    }
 
-        public ErrorResponse(int code, String message, String detail) {
-            this.code = code;
-            this.message = message;
-            this.detail = detail;
-        }
-
-        public int getCode() {
-            return code;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public String getDetail() {
-            return detail;
-        }
-
-        public LocalDateTime getTimestamp() {
-            return timestamp;
-        }
+    // Add Data Integrity Handler etc. for Detailed Exception
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public Result<String> handleDataIntegrity(DataIntegrityViolationException ex) {
+        String detail = ex.getMostSpecificCause() != null
+                ? ex.getMostSpecificCause().getMessage()
+                : ex.getMessage();
+        return Result.build(detail, ResultCodeEnum.ILLEGAL_REQUEST);
     }
 }
